@@ -23,7 +23,7 @@
       ensure (c = __)
 
       // Challenge 4 --------------------------------------
-      let d: int64 = __
+      let d: int64 = __ // Any example of an `int64` will do
 
       ensure(d.GetType() = typeof<int64>)
 
