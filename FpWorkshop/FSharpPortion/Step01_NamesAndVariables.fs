@@ -8,7 +8,7 @@ module Step01_NamesAndVariables =
 
   let run () =
     // Challenge 1 --------------------------------------
-    let a = __
+    let a = 42
 
     ensure (a = 42)
 
@@ -18,17 +18,17 @@ module Step01_NamesAndVariables =
     // What would happen if we just said `b = 99` like in C#?
     let b = 99
 
-    ensure (b = __)
+    ensure (b = 99)
 
     // Challenge 3 --------------------------------------
     let c = 21
 
     c = c + 1 // What's not quite right here?
 
-    ensure (c = __)
+    ensure (c = 21)
 
     // Challenge 4 --------------------------------------
-    let d: int64 = __ // Any example of an `int64` will do
+    let d: int64 = 3L // Any example of an `int64` will do
 
     ensure(d.GetType() = typeof<int64>)
 
@@ -37,16 +37,16 @@ module Step01_NamesAndVariables =
 
     e <- e + " FP";
 
-    ensure(e = __)
+    ensure(e = "Hello FP")
 
     // Challenge 5 (aside) ------------------------------
     let e: string ref = ref "Hello"
 
     e := !e + " FP";
 
-    ensure(e = __)
+    ensure(e = ref "Hello FP")
 
     // Challenge 6 --------------------------------------
     let f = Foobar()
 
-    ensure(f.WhatAmI = __)
+    ensure(f.WhatAmI = 65)

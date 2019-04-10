@@ -5,7 +5,7 @@
     public static void Run()
     {
       // Challenge 1 --------------------------------------
-      var a = ReplaceMe.__<int>();
+      var a = 42;
 
       Help.Ensure(a == 42);
 
@@ -15,14 +15,14 @@
       // Why can't we say `var b` like `let b` in F#?
       b = 99;
 
-      Help.Ensure(b == ReplaceMe.__<int>());
+      Help.Ensure(b == 99);
 
       // Challenge 3 --------------------------------------
       var c = 21;
 
       c = c + 1;
 
-      Help.Ensure(c == ReplaceMe.__<int>());
+      Help.Ensure(c == 22);
 
       // Challenge 4 --------------------------------------
       long d = 42; // For reference, no change needed here
@@ -34,12 +34,12 @@
 
       e = e + " FP";
 
-      Help.Ensure(e == ReplaceMe.__<string>());
+      Help.Ensure(e == "Hello FP");
 
       // Challenge 6 --------------------------------------
       var f = new Foobar();
 
-      Help.Ensure(f.WhatAmI == ReplaceMe.__<int>());
+      Help.Ensure(f.WhatAmI == 0);
     }
 
     class Foobar
