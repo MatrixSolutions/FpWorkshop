@@ -9,6 +9,8 @@
 
       // Challenge 2 --------------------------------------
       let b = 75
+
+      // What would happen if we just said `b = 99` like in C#?
       let b = 99
 
       ensure (b = __)

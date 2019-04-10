@@ -12,7 +12,8 @@
       // Challenge 2 --------------------------------------
       var b = 75;
       
-      //var b = 99; Question: why does this work in F# but not C#?
+      // Why can't we say `var b` like `let b` in F#?
+      b = 99;
 
       Help.Ensure(b == ReplaceMe.__<int>());
 
