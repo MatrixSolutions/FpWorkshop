@@ -35,6 +35,16 @@
       e = e + " FP";
 
       Help.Ensure(e == ReplaceMe.__<string>());
+
+      // Challenge 6 --------------------------------------
+      var f = new Foobar();
+
+      Help.Ensure(f.WhatAmI == ReplaceMe.__<int>());
+    }
+
+    class Foobar
+    {
+      public int WhatAmI { get; set; }
     }
   }
 }

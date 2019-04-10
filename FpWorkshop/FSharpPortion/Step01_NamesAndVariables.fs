@@ -1,42 +1,52 @@
 ﻿namespace FSharpPortion
 
-  module Step01_NamesAndVariables =
-    let run () =
-      // Challenge 1 --------------------------------------
-      let a = __
+module Step01_NamesAndVariables =
 
-      ensure (a = 42)
+  type Foobar() =
+    // F# Doesn't like to default values for you
+    member val WhatAmI = 65 with get, set
 
-      // Challenge 2 --------------------------------------
-      let b = 75
+  let run () =
+    // Challenge 1 --------------------------------------
+    let a = __
 
-      // What would happen if we just said `b = 99` like in C#?
-      let b = 99
+    ensure (a = 42)
 
-      ensure (b = __)
+    // Challenge 2 --------------------------------------
+    let b = 75
 
-      // Challenge 3 --------------------------------------
-      let c = 21
+    // What would happen if we just said `b = 99` like in C#?
+    let b = 99
 
-      c = c + 1 // What's not quite right here?
+    ensure (b = __)
 
-      ensure (c = __)
+    // Challenge 3 --------------------------------------
+    let c = 21
 
-      // Challenge 4 --------------------------------------
-      let d: int64 = __ // Any example of an `int64` will do
+    c = c + 1 // What's not quite right here?
 
-      ensure(d.GetType() = typeof<int64>)
+    ensure (c = __)
 
-      // Challenge 5 --------------------------------------
-      let mutable e = "Hello"
+    // Challenge 4 --------------------------------------
+    let d: int64 = __ // Any example of an `int64` will do
 
-      e <- e + " FP";
+    ensure(d.GetType() = typeof<int64>)
 
-      ensure(e = __)
+    // Challenge 5 --------------------------------------
+    let mutable e = "Hello"
 
-      // Challenge 5 (aside) ------------------------------
-      let e: string ref = ref "Hello"
+    e <- e + " FP";
 
-      e := !e + " FP";
+    ensure(e = __)
 
-      ensure(e = __)
+    // Challenge 5 (aside) ------------------------------
+    let e: string ref = ref "Hello"
+
+    e := !e + " FP";
+
+    ensure(e = __)
+
+    // Challenge 6 --------------------------------------
+    let f = Foobar()
+
+    ensure(f.WhatAmI = __)
