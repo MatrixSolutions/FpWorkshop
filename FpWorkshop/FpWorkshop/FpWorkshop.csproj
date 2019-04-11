@@ -46,6 +46,7 @@
     <Compile Include="Help.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Step02_Functions.cs" />
     <Compile Include="Step01_NamesAndVariables.cs" />
   </ItemGroup>
   <ItemGroup>
