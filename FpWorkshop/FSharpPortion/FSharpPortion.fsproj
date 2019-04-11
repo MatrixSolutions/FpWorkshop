@@ -46,6 +46,7 @@
     <Compile Include="Help.fs" />
     <Compile Include="Step01_NamesAndVariables.fs" />
     <Compile Include="Step02_Functions.fs" />
+    <Compile Include="Step03_Sequences.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">
