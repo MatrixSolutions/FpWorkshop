@@ -15,7 +15,7 @@ namespace FpWorkshop
       // Challenge 2 --------------------------------------
       Func<int, int> echo = x => x;
 
-      // Can you find a way to inline `x => x`?
+      // I don't think there's a way to inline `x => x`...
       Help.Ensure(echo(42) == ReplaceMe.__<int>());
 
       // Challenge 3 --------------------------------------
