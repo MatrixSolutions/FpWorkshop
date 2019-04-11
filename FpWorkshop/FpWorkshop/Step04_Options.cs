@@ -62,7 +62,7 @@ namespace FpWorkshop
 
     public class Some<T> : IOption<T>
     {
-      public Some(int v)
+      public Some(T v)
       {
         throw new NotImplementedException();
       }
