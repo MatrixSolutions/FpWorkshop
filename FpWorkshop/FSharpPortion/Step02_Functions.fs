@@ -6,31 +6,31 @@ module Step02_Functions =
     // Challenge 1 --------------------------------------
     let iTellYouWhatYouToldMe x = x
 
-    ensure(iTellYouWhatYouToldMe 42 = __)
+    ensure(iTellYouWhatYouToldMe 42 = 42)
 
     // Challenge 1 (aside) ------------------------------
     /// The above function definition syntax is actually just syntactic sugar for this
     let iTellYouWhatYouToldMeLowCarb = fun x -> x
 
-    ensure(iTellYouWhatYouToldMeLowCarb 42 = __)
+    ensure(iTellYouWhatYouToldMeLowCarb 42 = 42)
 
     // Challenge 2 --------------------------------------
 
-    ensure((fun x -> x) "Wait! You lost your name" = __)
+    ensure((fun x -> x) "Wait! You lost your name" = "Wait! You lost your name")
 
     // Challenge 3 --------------------------------------
     let myAdd a b = a + b
 
     // Application is just whitespace in F#, no parens necessary unless expressing order of op!
-    ensure(myAdd 2 3 = __)
+    ensure(myAdd 2 3 = 5)
 
     // Challenge 4 --------------------------------------
     let specialAdd = myAdd 4 // Arguments can be applied later, no problem!
 
-    ensure(specialAdd 2 = __)
+    ensure(specialAdd 2 = 6)
 
     // Challenge 5 --------------------------------------
-    let alwaysReturnTheFirst a b = __
+    let alwaysReturnTheFirst a b = a
 
     // Given this test compiles, how many possible implementations does `alwaysReturnTheFirst` have?
     ensure(alwaysReturnTheFirst "foo" 42 = "foo")
@@ -39,9 +39,9 @@ module Step02_Functions =
     // All that functions really do is bind names to values in a given scope... Sound familiar?
     (
       fun a b c ->
-        ensure(b = __)
-        ensure(a = __)
-        ensure(c = __)
+        ensure(b = "blue")
+        ensure(a = "red")
+        ensure(c = "green")
 
     ) "red" "blue" "green" 
 
@@ -60,7 +60,7 @@ module Step02_Functions =
     // Challenge 7 --------------------------------------
     // Let's make let, shall we? Hehe
 
-    let sillyLet value scope = __
+    let sillyLet value scope = scope value
 
     sillyLet 5 (fun a ->
     sillyLet 6 (fun b ->
@@ -73,11 +73,11 @@ module Step02_Functions =
 
     let addOne = myAdd 1
 
-    ensure (applyThenMultiply addOne 4 5 = __)
+    ensure (applyThenMultiply addOne 4 5 = 30)
 
     // Challenge 9 --------------------------------------
     // Which function that we've already seen acts like "choose value"?
-    ensure (applyThenMultiply __ 7 3 = (7*3))
+    ensure (applyThenMultiply iTellYouWhatYouToldMe 7 3 = (7*3))
 
     // Challenge 9 (spoiler/note) -----------------------
     // This function exists in F#'s global namespace as `id`
@@ -85,17 +85,17 @@ module Step02_Functions =
 
     // Challenge 10 --------------------------------------
     // Which function that we've already seen acts like "ignore value, use this instead"?
-    ensure (applyThenMultiply (__ 5) 7 3 = (5*5))
+    ensure (applyThenMultiply (alwaysReturnTheFirst 5) 7 3 = (5*5))
 
     // Challenge 11 --------------------------------------
     // In F# even symbolic operators are functions!
     // They can be moved to infix notation (apply in the front) by wrapping in parens
 
-    ensure ((*) 3 4 = __ * __)
+    ensure ((*) 3 4 = 3 * 4)
 
     // Challenge 12 --------------------------------------
     // This is pretty powerful when combined with partial application
-    let alwaysAdd21 = __ 21
+    let alwaysAdd21 = (+) 21
 
     ensure (alwaysAdd21 3 = 24)
 
@@ -119,7 +119,7 @@ module Step02_Functions =
 
     let pipedResult = 21 |> myAdd 1 |> myMult 2
 
-    ensure (pipedResult = __)
+    ensure (pipedResult = 44)
 
     // Challenge 14 --------------------------------------
     // F# also has a "backwards pipe operator" but it's only recommended for
@@ -128,7 +128,7 @@ module Step02_Functions =
     // direction that data flows
 
     let ``rewrite me using one back pipe`` =
-      myAdd 1 (myMult 2 6)
+      myAdd 1 <| myMult 2 6
 
     ensure (``rewrite me using one back pipe`` = 13)
 
@@ -165,7 +165,10 @@ module Step02_Functions =
         |> drewgle
         |> refloogle
 
-    let refloogleUsingCompose = __
+    let refloogleUsingCompose =
+      stewgle
+        >> drewgle
+        >> refloogle
 
     ensure (refloogleThePreStewgledDrewgle "space" = refloogleUsingCompose "space")
 
@@ -173,6 +176,6 @@ module Step02_Functions =
     // "Backwards compose" also exists. Can you guess it's symbol?
     // (don't forget to wrap it in parens since it's a symbolic operator)
 
-    let backComposeSymbol = __
+    let backComposeSymbol = (<<)
 
     ensure ((backComposeSymbol (myAdd 1) (myMult 4)) 2 = (2 * 4) + 1)
