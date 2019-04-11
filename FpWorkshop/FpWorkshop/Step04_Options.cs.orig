@@ -37,28 +37,54 @@ namespace FpWorkshop
 
     public class Some<T> : IOption<T>
     {
-      private readonly T _v;
-
+<<<<<<< Updated upstream
       public Some(T v)
+=======
+      private readonly int _v;
+
+      public Some(int v)
+>>>>>>> Stashed changes
       {
         _v = v;
       }
 
-      public bool IsSomeOf(T value) => _v.Equals(value);
+      public bool IsSomeOf(T value) => value == _v;
 
-      public bool IsSome => true;
+      public bool IsSome
+      {
+        get
+        {
+          throw new NotImplementedException();
+        }
+      }
 
-      public bool IsNone => false;
+      public bool IsNone 
+      {
+        get
+        {
+          throw new NotImplementedException();
+        }
+      }
 
-      public IOption<TResult> Bind<TResult>(Func<T, IOption<TResult>> f) =>
-        f(_v);
+      public IOption<TResult> Bind<TResult>(Func<T, IOption<TResult>> f)
+      {
+        throw new NotImplementedException();
+      }
 
-      public IOption<TResult> Map<TResult>(Func<T, TResult> f) =>
-        new Some<TResult>(f(_v));
+      public IOption<TResult> Map<TResult>(Func<T, TResult> f)
+      {
+        throw new NotImplementedException();
+      }
 
-      public T DefaultValue(T aDefault) => _v;
+      public T DefaultValue(T aDefault)
+      {
+        throw new NotImplementedException();
+      }
 
-      public IList<T> ToList() => new List<T> {_v};
+      public IList<T> ToList()
+      {
+        throw new NotImplementedException();
+      }
     }
 
     public static void Run()
@@ -125,7 +151,7 @@ namespace FpWorkshop
       // Challenge 10 --------------------------------------
 
       Help.Ensure(!new None<int>().ToList().Any());
-      Help.Ensure(new Some<int>(42).ToList().SequenceEqual(new List<int>{ 42 }));
+      Help.Ensure(!new Some<int>(42).ToList().SequenceEqual(new [] { 42 }));
 
       // Challenge 11 --------------------------------------
       // If options are so simlar to lists then why not just use lists everywhere?
