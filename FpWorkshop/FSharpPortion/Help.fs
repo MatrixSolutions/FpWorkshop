@@ -7,6 +7,10 @@ let stewgle x = x + " stewgled"
 let drewgle x = x + " drewgled"
 let refloogle x = x + " refloogled"
 
+let pretendSquish = function
+  | Some (Some v) -> Some v
+  | _ -> None
+
 let inline ensure condition =
   if not condition then
     failwithf "Expected condition to be met!"
