@@ -152,15 +152,15 @@ module Step05_AdtsAndPatternMatching =
     ensure(toInt Zero = 0)
     ensure(toInt three = 3)
 
-    // Here's a classic, give `add` a try
+    // Here's a classic, give `isEven` a try
 
-    let rec add a b =
+    let rec isEven num =
       __
 
-    ensure(add Zero Zero = Zero)
-    ensure(add three Zero = three)
-    ensure(add Zero three = three)
-    ensure(add three three = Successor (Successor (Successor three)))
+    ensure(isEven Zero)
+    ensure(not (isEven three))
+    ensure(isEven (Successor three))
+    ensure(not (isEven (Successor Zero)))
 
   type MyList<'a> =
     | Cons of 'a * MyList<'a>
