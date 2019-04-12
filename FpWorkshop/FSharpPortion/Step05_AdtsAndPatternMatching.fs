@@ -34,7 +34,9 @@ module Step05_AdtsAndPatternMatching =
 
     let goodLunchOptions hungryFor =
       match hungryFor with
-        | _ -> []
+        | FishSandwiches -> [GoodCatchFishAndTurf; CornerDeli]
+        | Burritos -> [ElBurrito]
+        | DeepFriedGoodness -> [ElBurrito; GoodCatchFishAndTurf]
 
     ensure (goodLunchOptions FishSandwiches = [GoodCatchFishAndTurf; CornerDeli])
     ensure (goodLunchOptions Burritos = [ElBurrito])
@@ -66,7 +68,10 @@ module Step05_AdtsAndPatternMatching =
 
     // Why don't you try one!
     let greetBigAndLittleBobOnly x =
-      __
+      match x with
+        | "bob" -> "Hello!"
+        | "BOB" -> "Hello!"
+        | _ -> "(Silence)"
 
     ensure(greetBigAndLittleBobOnly "bob" = "Hello!")
     ensure(greetBigAndLittleBobOnly "BOB" = "Hello!")
@@ -87,7 +92,9 @@ module Step05_AdtsAndPatternMatching =
 
     // Give `tryTail` a go! Extra credit if you can use `_` in two patterns (i.e. part before `->`)
     let tryTail list =
-      __
+      match list with
+        | (_::tail) -> Some tail
+        | [] -> None
 
     ensure (tryTail [] = None)
     ensure (tryTail [1; 2; 3; 4] = Some [2; 3; 4])
@@ -107,7 +114,9 @@ module Step05_AdtsAndPatternMatching =
     // Your turn!
 
     let squashOptionList ol =
-      __
+      match ol with
+        | Some vs -> vs
+        | _ -> []
 
     ensure(squashOptionList None = [])
     ensure(squashOptionList (Some []) = [])
@@ -124,7 +133,9 @@ module Step05_AdtsAndPatternMatching =
     // For good practice, give `map` a try
 
     let map f myOpt =
-      __
+      match myOpt with
+        | MySome v -> MySome (f v)
+        | MyNone -> MyNone
 
     ensure(map ((*) 2) MyNone = MyNone)
     ensure(map ((*) 2) (MySome 21) = (MySome 42))
@@ -155,7 +166,9 @@ module Step05_AdtsAndPatternMatching =
     // Here's a classic, give `isEven` a try
 
     let rec isEven num =
-      __
+      match num with
+        | Zero -> true
+        | Successor num -> not (isEven num)
 
     ensure(isEven Zero)
     ensure(not (isEven three))
@@ -186,7 +199,9 @@ module Step05_AdtsAndPatternMatching =
 
     // hint, you'll need recursion! Ask for help if you need it.
     let rec map f myList =
-      __
+      match myList with
+        | EmptyList -> EmptyList
+        | Cons (v, rest) -> Cons (f v, map f rest)
 
     ensure(map ((*) 2) EmptyList = EmptyList)
     ensure(map ((*) 2) list = Cons (2, (Cons (4, (Cons (6, EmptyList))))))
@@ -245,7 +260,7 @@ module Step05_AdtsAndPatternMatching =
     // You don't see `bimap` too much in F# but it's mighty useful
 
     let bimap f g (x, y) =
-      __
+      f x, g y
 
     let add1 = (+) 1
     let greet name = "Hi " + name
@@ -266,27 +281,41 @@ module Step05_AdtsAndPatternMatching =
     let whiteHaven = SmallCountryTown ("White_Haven", 1097)
 
     let hasKnownPopulation location =
-      __
+      match location with
+        | Wilderness -> false
+        | _ -> true
 
     ensure (hasKnownPopulation pittsburgh)
     ensure (hasKnownPopulation whiteHaven)
     ensure (not (hasKnownPopulation Wilderness))
 
     let updateName newName location =
-      __
+      match location with
+        | Wilderness -> Wilderness
+        | City (_, pop) -> City (newName, pop)
+        | SmallCountryTown (_, pop) -> SmallCountryTown (newName, pop)
 
     ensure (updateName "White Haven" whiteHaven = (SmallCountryTown ("White Haven", 1097)))
     ensure (updateName "Desert" Wilderness = Wilderness)
 
     let getName location =
-      __
+      match location with
+        | City (name, _) -> Some name
+        | SmallCountryTown (name, _) -> Some name
+        | Wilderness -> None
 
     ensure (getName whiteHaven = Some "White_Haven")
     ensure (getName pittsburgh = Some "Pittsburgh")
     ensure (getName Wilderness = None)
 
     let subsume locA locB =
-      __
+      match locA, locB with
+        | City (name, p1), City (_, p2) -> City (name, p1 + p2)
+        | City (name, p1), SmallCountryTown (_, p2) -> City (name, p1 + p2)
+        | SmallCountryTown (name, p1), SmallCountryTown (_, p2) -> City (name, p1 + p2)
+        | SmallCountryTown (name, p1), City (_, p2) -> City (name, p1 + p2)
+        | anything, Wilderness -> anything
+        | Wilderness, _ -> Wilderness
 
     ensure (subsume pittsburgh whiteHaven = City ("Pittsburgh", 308144 + 1097))
     ensure (subsume whiteHaven pittsburgh = City ("White_Haven", 308144 + 1097))
@@ -296,7 +325,9 @@ module Step05_AdtsAndPatternMatching =
     ensure (subsume whiteHaven Wilderness = whiteHaven)
 
     let isPittsburgh location =
-      __
+      match location with
+        | City ("Pittsburgh", _) -> true
+        | _ -> false
 
     ensure (isPittsburgh pittsburgh)
     ensure (not <| isPittsburgh (City ("New York City", 8622698)))

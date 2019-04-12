@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 
 namespace FpWorkshop
 {
@@ -13,35 +14,17 @@ namespace FpWorkshop
 
     public class ElBurrito : ILunchOption
     {
-      public bool SellsSandwiches
-      {
-        get
-        {
-          throw new NotImplementedException();
-        }
-      }
+      public bool SellsSandwiches => false;
     }
 
     public class GoodCatchFishAndTurf : ILunchOption
     {
-      public bool SellsSandwiches 
-      {
-        get
-        {
-          throw new NotImplementedException();
-        }
-      }
+      public bool SellsSandwiches => true;
     }
 
     public class CornerDeli : ILunchOption
     {
-      public bool SellsSandwiches 
-      {
-        get
-        {
-          throw new NotImplementedException();
-        }
-      }
+      public bool SellsSandwiches => true;
     }
 
     public interface IHungryFor
@@ -51,15 +34,7 @@ namespace FpWorkshop
 
     public class FishSandwiches : IHungryFor
     {
-      public override bool Equals(object obj)
-      {
-        throw new NotImplementedException();
-      }
-
-      public override int GetHashCode()
-      {
-        throw new NotImplementedException();
-      }
+      public override bool Equals(object obj) => obj is FishSandwiches;
 
       public IEnumerable<ILunchOption> GoodLunchOptions()
       {
