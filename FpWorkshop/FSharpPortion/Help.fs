@@ -14,3 +14,5 @@ let pretendSquish = function
 let inline ensure condition =
   if not condition then
     failwithf "Expected condition to be met!"
+
+let possibleValuesInTypeBool = 2

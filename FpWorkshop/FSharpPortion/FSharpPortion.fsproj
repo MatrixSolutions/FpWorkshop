@@ -50,6 +50,7 @@
     <Compile Include="Step04_Options.fs" />
     <Compile Include="Step05_AdtsAndPatternMatching.fs" />
     <Compile Include="Step06_Records.fs" />
+    <Compile Include="Step07_Oddities.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">

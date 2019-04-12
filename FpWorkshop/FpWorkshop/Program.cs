@@ -23,9 +23,9 @@
 //      FSharpPortion.Step05_AdtsAndPatternMatching.challenge9();
 //      Step05_AdtsAndPatternMatching.Challege1();
 //      Step05_AdtsAndPatternMatching.Challege2();
-      FSharpPortion.Step06_Records.challenge1();
-      FSharpPortion.Step06_Records.challenge2();
-      FSharpPortion.Step06_Records.challenge3();
+//      FSharpPortion.Step06_Records.challenge1();
+//      FSharpPortion.Step06_Records.challenge2();
+//      FSharpPortion.Step06_Records.challenge3();
 
       System.Console.WriteLine("Looks like everything works!");
       System.Console.ReadLine();
