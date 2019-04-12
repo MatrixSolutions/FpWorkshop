@@ -48,6 +48,7 @@
     <Compile Include="Step02_Functions.fs" />
     <Compile Include="Step03_Sequences.fs" />
     <Compile Include="Step04_Options.fs" />
+    <Compile Include="Step05_AdtsAndPatternMatching.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">
