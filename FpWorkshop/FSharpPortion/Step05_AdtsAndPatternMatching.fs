@@ -110,8 +110,8 @@ module Step05_AdtsAndPatternMatching =
       __
 
     ensure(squashOptionList None = [])
-    ensure(squashOptionList Some [] = [])
-    ensure(squashOptionList Some [1; 2; 3] = [1; 2; 3])
+    ensure(squashOptionList (Some []) = [])
+    ensure(squashOptionList (Some [1; 2; 3]) = [1; 2; 3])
 
   type MyOption<'a> =
     | MySome of 'a // ADTs can hang onto data!
