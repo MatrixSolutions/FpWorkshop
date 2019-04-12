@@ -26,6 +26,11 @@
 //      FSharpPortion.Step06_Records.challenge1();
 //      FSharpPortion.Step06_Records.challenge2();
 //      FSharpPortion.Step06_Records.challenge3();
+      FSharpPortion.Step07_Oddities.challenge1();
+      FSharpPortion.Step07_Oddities.challenge2();
+      FSharpPortion.Step07_Oddities.challenge3();
+      FSharpPortion.Step07_Oddities.challenge4();
+      FSharpPortion.Step07_Oddities.challenge5();
 
       System.Console.WriteLine("Looks like everything works!");
       System.Console.ReadLine();
