@@ -56,11 +56,6 @@ namespace FpWorkshop
         throw new NotImplementedException();
       }
 
-      public override int GetHashCode()
-      {
-        throw new NotImplementedException();
-      }
-
       public IEnumerable<ILunchOption> GoodLunchOptions()
       {
         throw new NotImplementedException();
@@ -74,11 +69,6 @@ namespace FpWorkshop
         throw new NotImplementedException();
       }
 
-      public override int GetHashCode()
-      {
-        throw new NotImplementedException();
-      }
-
       public IEnumerable<ILunchOption> GoodLunchOptions()
       {
         throw new NotImplementedException();
@@ -88,11 +78,6 @@ namespace FpWorkshop
     public class DeepFriedGoodness : IHungryFor
     {
       public override bool Equals(object obj)
-      {
-        throw new NotImplementedException();
-      }
-
-      public override int GetHashCode()
       {
         throw new NotImplementedException();
       }
@@ -142,11 +127,6 @@ namespace FpWorkshop
         throw new NotImplementedException();
       }
 
-      public override int GetHashCode()
-      {
-        throw new NotImplementedException();
-      }
-
       public T Match<T>(Func<string, int, T> whenCity, Func<string, int, T> whenSmallCountryTown, Func<T> whenWilderness)
       {
         throw new NotImplementedException();
@@ -164,11 +144,6 @@ namespace FpWorkshop
         throw new NotImplementedException();
       }
 
-      public override int GetHashCode()
-      {
-        throw new NotImplementedException();
-      }
-
       public T Match<T>(Func<string, int, T> whenCity, Func<string, int, T> whenSmallCountryTown, Func<T> whenWilderness)
       {
         throw new NotImplementedException();
@@ -178,11 +153,6 @@ namespace FpWorkshop
     public class Wilderness : ILocation
     {
       public override bool Equals(object obj)
-      {
-        throw new NotImplementedException();
-      }
-
-      public override int GetHashCode()
       {
         throw new NotImplementedException();
       }
