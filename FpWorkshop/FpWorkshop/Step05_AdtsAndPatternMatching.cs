@@ -15,16 +15,31 @@ namespace FpWorkshop
     public class ElBurrito : ILunchOption
     {
       public bool SellsSandwiches => false;
+
+      public override bool Equals(object obj)
+      {
+          throw new NotImplementedException();
+      }
     }
 
     public class GoodCatchFishAndTurf : ILunchOption
     {
       public bool SellsSandwiches => true;
+
+      public override bool Equals(object obj)
+      {
+          throw new NotImplementedException();
+      }
     }
 
     public class CornerDeli : ILunchOption
     {
       public bool SellsSandwiches => true;
+
+      public override bool Equals(object obj)
+      {
+        throw new NotImplementedException();
+      }
     }
 
     public interface IHungryFor
