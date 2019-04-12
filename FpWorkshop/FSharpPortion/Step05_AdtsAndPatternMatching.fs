@@ -185,7 +185,7 @@ module Step05_AdtsAndPatternMatching =
     // For good practice, give `map` a try
 
     // hint, you'll need recursion! Ask for help if you need it.
-    let map f myOpt =
+    let rec map f myList =
       __
 
     ensure(map ((*) 2) EmptyList = EmptyList)
