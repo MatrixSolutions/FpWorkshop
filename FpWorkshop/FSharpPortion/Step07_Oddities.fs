@@ -21,7 +21,9 @@ module Step07_Oddities =
     // Give it a try!
 
     let isOver12 range =
-      __
+      match range with
+        | Child | Infant -> false
+        | _ -> true
 
     ensure (isOver12 TeenMinor)
     ensure (isOver12 CigarsOnlyAdult)
@@ -47,8 +49,9 @@ module Step07_Oddities =
      
     // Give it a try (feel free to copy your answer from 1 and use `function` instead)!
 
-    let isOver12 range =
-      __
+    let isOver12 = function
+      | Child | Infant -> false
+      | _ -> true
 
     ensure (isOver12 TeenMinor)
     ensure (isOver12 CigarsOnlyAdult)
@@ -84,7 +87,9 @@ module Step07_Oddities =
     // Try writing `canBuyCigars` with the active pattern defined above.
 
     let canBuyCigars range =
-      __
+      match range with
+        | OldEnoughToBuyCigars -> true
+        | TooYoungToBuyCigars -> false
 
     ensure (not (canBuyCigars TeenMinor))
     ensure (canBuyCigars CigarsOnlyAdult)
@@ -105,7 +110,7 @@ module Step07_Oddities =
     // Give `Option.bind` a shot (`>>=` is a pretty typical symbol for it in FP languages)
 
     let (>>=) opt f =
-      __
+      Option.bind f opt 
 
     ensure (None >>= (fun _ -> None)       = None)
     ensure (None >>= (fun _ -> Some 42)    = None)
@@ -133,7 +138,7 @@ module Step07_Oddities =
 
     // How many possible values are there in the type bool?
 
-    ensure (possibleValuesInTypeBool = __)
+    ensure (possibleValuesInTypeBool = 2)
 
     // If you remove one of those values you're left with an interesting data type
 
