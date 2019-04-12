@@ -36,46 +36,24 @@ namespace FpWorkshop
     {
       public override bool Equals(object obj) => obj is FishSandwiches;
 
-      public IEnumerable<ILunchOption> GoodLunchOptions()
-      {
-        throw new NotImplementedException();
-      }
+      public IEnumerable<ILunchOption> GoodLunchOptions() =>
+        new[] {new GoodCatchFishAndTurf() as ILunchOption, new CornerDeli()};
     }
 
     public class Burritos : IHungryFor
     {
-      public override bool Equals(object obj)
-      {
-        throw new NotImplementedException();
-      }
+      public override bool Equals(object obj) => obj is Burritos;
 
-      public override int GetHashCode()
-      {
-        throw new NotImplementedException();
-      }
-
-      public IEnumerable<ILunchOption> GoodLunchOptions()
-      {
-        throw new NotImplementedException();
-      }
+      public IEnumerable<ILunchOption> GoodLunchOptions() =>
+        new[] {new ElBurrito()};
     }
 
     public class DeepFriedGoodness : IHungryFor
     {
-      public override bool Equals(object obj)
-      {
-        throw new NotImplementedException();
-      }
+      public override bool Equals(object obj) => obj is DeepFriedGoodness;
 
-      public override int GetHashCode()
-      {
-        throw new NotImplementedException();
-      }
-
-      public IEnumerable<ILunchOption> GoodLunchOptions()
-      {
-        throw new NotImplementedException();
-      }
+      public IEnumerable<ILunchOption> GoodLunchOptions() =>
+        new[] {new ElBurrito() as ILunchOption, new GoodCatchFishAndTurf()};
     }
 
     public static void Challege1()
@@ -108,77 +86,91 @@ namespace FpWorkshop
 
     public class City : ILocation
     {
+      private readonly string _name;
+      private readonly int _population;
+
       public City(string name, int population)
       {
+        _name = name;
+        _population = population;
       }
 
       public override bool Equals(object obj)
       {
-        throw new NotImplementedException();
+        var a = obj as City;
+        return a != null && a._name == _name && a._population == _population;
       }
 
-      public override int GetHashCode()
-      {
-        throw new NotImplementedException();
-      }
-
-      public T Match<T>(Func<string, int, T> whenCity, Func<string, int, T> whenSmallCountryTown, Func<T> whenWilderness)
-      {
-        throw new NotImplementedException();
-      }
+      public T Match<T>(Func<string, int, T> whenCity, Func<string, int, T> whenSmallCountryTown, Func<T> whenWilderness) =>
+        whenCity(_name, _population);
     }
 
     public class SmallCountryTown : ILocation
     {
+      private readonly string _name;
+      private readonly int _population;
+
       public SmallCountryTown(string name, int population)
       {
+        _name = name;
+        _population = population;
       }
 
       public override bool Equals(object obj)
       {
-        throw new NotImplementedException();
+        var a = obj as SmallCountryTown;
+        return a != null && a._name == _name && a._population == _population;
       }
 
-      public override int GetHashCode()
-      {
-        throw new NotImplementedException();
-      }
-
-      public T Match<T>(Func<string, int, T> whenCity, Func<string, int, T> whenSmallCountryTown, Func<T> whenWilderness)
-      {
-        throw new NotImplementedException();
-      }
+      public T Match<T>(Func<string, int, T> whenCity, Func<string, int, T> whenSmallCountryTown, Func<T> whenWilderness) =>
+        whenSmallCountryTown(_name, _population);
     }
 
     public class Wilderness : ILocation
     {
-      public override bool Equals(object obj)
-      {
-        throw new NotImplementedException();
-      }
+      public override bool Equals(object obj) => obj is Wilderness;
 
-      public override int GetHashCode()
-      {
-        throw new NotImplementedException();
-      }
-
-      public T Match<T>(Func<string, int, T> whenCity, Func<string, int, T> whenSmallCountryTown, Func<T> whenWilderness)
-      {
-        throw new NotImplementedException();
-      }
+      public T Match<T>(Func<string, int, T> whenCity, Func<string, int, T> whenSmallCountryTown, Func<T> whenWilderness) =>
+        whenWilderness();
     }
 
     private static bool HasKnownPopulation(ILocation location) =>
-      ReplaceMe.__<bool>();
+      location.Match(
+        (_, __) => true,
+        (_, __) => true,
+        () => false
+      );
 
     private static ILocation UpdateName(string newName, ILocation location) =>
-      ReplaceMe.__<ILocation>();
+      location.Match(
+        (_, pop) => new City(newName, pop) as ILocation,
+        (_, pop) => new SmallCountryTown(newName, pop), 
+        () => new Wilderness()
+      );
 
     private static ILocation Subsume(ILocation locA, ILocation locB) =>
-      ReplaceMe.__<ILocation>();
+      locA.Match(
+        (name, pop1) =>
+          locB.Match(
+            (_, pop2) => new City(name, pop1 + pop2) as ILocation, 
+            (_, pop2) => new City(name, pop1 + pop2),
+            () => locA
+          ),
+        (name, pop1) =>
+          locB.Match(
+            (_, pop2) => new City(name, pop1 + pop2) as ILocation,
+            (_, pop2) => new City(name, pop1 + pop2),
+            () => locA
+          ),
+        () => new Wilderness()
+      );
 
     private static bool IsPittsburgh(ILocation location) =>
-      ReplaceMe.__<bool>();
+      location.Match(
+        (name, __) => name == "Pittsburgh",
+        (_, __) => false,
+        () => false
+      );
 
     public static void Challege2()
     {
