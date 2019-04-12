@@ -252,7 +252,7 @@ namespace FpWorkshop
       Help.Ensure(Subsume(pittsburgh, whiteHaven).Equals(new City("Pittsburgh", 308144 + 1097)));
       Help.Ensure(Subsume(whiteHaven, pittsburgh).Equals(new City("White_Haven", 308144 + 1097)));
       Help.Ensure(Subsume(new Wilderness(), whiteHaven).Equals(new Wilderness()));
-      Help.Ensure(Subsume(new Wilderness(), pittsburgh).Equals(new Wilderness())));
+      Help.Ensure(Subsume(new Wilderness(), pittsburgh).Equals(new Wilderness()));
       Help.Ensure(Subsume(pittsburgh, new Wilderness()).Equals(pittsburgh));
       Help.Ensure(Subsume(whiteHaven, new Wilderness()).Equals(whiteHaven));
 

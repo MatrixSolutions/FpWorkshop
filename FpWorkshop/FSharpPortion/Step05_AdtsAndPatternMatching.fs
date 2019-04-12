@@ -40,7 +40,7 @@ module Step05_AdtsAndPatternMatching =
     ensure (goodLunchOptions Burritos = [ElBurrito])
     ensure (goodLunchOptions DeepFriedGoodness = [ElBurrito; GoodCatchFishAndTurf])
 
-  let ``Challenge 2`` () =
+  let challenge2 () =
     // Just about any F# value can be matched, not just ADTs!
 
     let nonZero n =
@@ -73,7 +73,7 @@ module Step05_AdtsAndPatternMatching =
     ensure(greetBigAndLittleBobOnly "Bob" = "(Silence)")
     ensure(greetBigAndLittleBobOnly "Justice Beaver" = "(Silence)")
 
-  let ``Challenge 3`` () =
+  let challenge3 () =
     // Lists are pattern matched using what are called "cons cells" which basically means
     // that a list is either empty or a "head" value "consed" with another list.
 
@@ -92,7 +92,7 @@ module Step05_AdtsAndPatternMatching =
     ensure (tryTail [] = None)
     ensure (tryTail [1; 2; 3; 4] = Some [2; 3; 4])
 
-  let ``Challenge 4`` () =
+  let challenge4 () =
     // Our pal option can also be matched
 
     let isSomeOf42 v =
@@ -117,7 +117,7 @@ module Step05_AdtsAndPatternMatching =
     | MySome of 'a // ADTs can hang onto data!
     | MyNone
 
-  let ``Challenge 5`` () =
+  let challenge5 () =
     // The above ADT is the definition of our pal option! Minus the `My`s of course...
     // That's all it takes to make a structure representing the absence of data -- wow.
 
@@ -134,7 +134,7 @@ module Step05_AdtsAndPatternMatching =
     | Zero
     | Successor of Number
 
-  let ``Challenge 6`` () =
+  let challenge6 () =
     // The above ADT is a definition for natural numbers! Notice that it's recursive
     // (`Number` is referenced in the definition).
 
@@ -166,7 +166,7 @@ module Step05_AdtsAndPatternMatching =
     | Cons of 'a * MyList<'a>
     | EmptyList
 
-  let ``Challenge 7`` () =
+  let challenge7 () =
     // The above ADT is the definition of a linked list! Notice that it's also recursive
     // (`MyList` is referenced in the definition).
 
@@ -192,7 +192,7 @@ module Step05_AdtsAndPatternMatching =
     ensure(map ((*) 2) list = Cons (2, (Cons (4, (Cons (6, EmptyList))))))
     ensure(map ((*) 2) (Cons (5, EmptyList)) = Cons (10, EmptyList))
 
-  let ``Challenge 8`` () =
+  let challenge8 () =
     // It'd be a shame to not mention tuples at this point
 
     // Tuples are a special type in F# that almost make the `,` behave like a magical operator!
@@ -258,7 +258,7 @@ module Step05_AdtsAndPatternMatching =
     | SmallCountryTown of string*int
     | Wilderness
 
-  let ``Challenge 9`` () =
+  let challenge9 () =
     // Let's practice pattern matching with the locations above. We'll use options
     // wherever things may be arbitrary
 
