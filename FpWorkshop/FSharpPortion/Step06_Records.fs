@@ -11,19 +11,19 @@ module Step06_Records =
 
     ensure (chuckNorris <> { Name="Chuck Norris"; Age=1000000; SkillLevel=9001 })
 
-    ensure (chuckNorris = { Name=__; Age=__; SkillLevel=__ })
+    ensure (chuckNorris = { Name="Chuck Norris"; Age=79; SkillLevel=9001 })
 
   let challenge2 () =
     // Records are immutable and have a convenient update and get (.) syntax
 
     let duckTorris = { chuckNorris with Name="Duck Torris"; SkillLevel=2 }
 
-    ensure (chuckNorris.Name = __)
-    ensure (chuckNorris.Age = __)
-    ensure (chuckNorris.SkillLevel = __)
-    ensure (duckTorris.Name = __)
-    ensure (duckTorris.Age = __)
-    ensure (duckTorris.SkillLevel = __)
+    ensure (chuckNorris.Name = "Chuck Norris")
+    ensure (chuckNorris.Age = 79)
+    ensure (chuckNorris.SkillLevel = 9001)
+    ensure (duckTorris.Name = "Duck Torris")
+    ensure (duckTorris.Age = 79)
+    ensure (duckTorris.SkillLevel = 2)
 
   let challenge3 () =
     // Records are nice with pattern matching
@@ -38,10 +38,21 @@ module Step06_Records =
     let isNotChuckNorris { Name=name } = name <> chuckNorris.Name
 
     // Give it a try using match or destructing, whichever you prefer
-    let skillLevelsAreWithin10OfEachOther person1 person2 =
-      __
+    let skillLevelsAreWithin10OfEachOther { SkillLevel=skill1 } { SkillLevel=skill2 } =
+      abs (skill1 - skill2) < 10
 
-    let donaldDuck = { Name="Donald"; Age=85; SkillLevel=4 }
+    // OR
+
+    let skillLevelsAreWithin10OfEachOther person1 person2 =
+      match person1, person2 with
+        | { SkillLevel=skill1 }, { SkillLevel=skill2 } -> abs (skill1 - skill2) < 10
+
+    // OR
+
+    let skillLevelsAreWithin10OfEachOther person1 person2 =
+      abs (person1.SkillLevel - person2.SkillLevel) < 10
+
+    let donaldDuck = { Name="Donald"; Age=85; SkillLevel=6 }
     let tomCruise = { Name="Tom Cruise"; Age=56; SkillLevel=15 }
     let oprah = { Name="Oprah"; Age=65; SkillLevel=16 }
 
