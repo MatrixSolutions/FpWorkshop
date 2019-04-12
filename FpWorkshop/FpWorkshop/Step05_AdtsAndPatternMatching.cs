@@ -20,6 +20,11 @@ namespace FpWorkshop
           throw new NotImplementedException();
         }
       }
+
+      public override bool Equals(object obj)
+      {
+          throw new NotImplementedException();
+      }
     }
 
     public class GoodCatchFishAndTurf : ILunchOption
@@ -31,6 +36,11 @@ namespace FpWorkshop
           throw new NotImplementedException();
         }
       }
+
+      public override bool Equals(object obj)
+      {
+          throw new NotImplementedException();
+      }
     }
 
     public class CornerDeli : ILunchOption
@@ -41,6 +51,11 @@ namespace FpWorkshop
         {
           throw new NotImplementedException();
         }
+      }
+
+      public override bool Equals(object obj)
+      {
+        throw new NotImplementedException();
       }
     }
 
