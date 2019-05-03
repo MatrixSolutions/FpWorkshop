@@ -45,8 +45,6 @@ module Step02_Functions =
 
     ) "red" "blue" "green" 
 
-    ensure(alwaysReturnTheFirst "foo" 42 = "foo")
-
     // Challenge 6 (aside) ------------------------------
     // It turns out that `let` can be thought of as just syntactic sugar for function application.
     // Can you think of a case where the following 2 forms behave differently?
